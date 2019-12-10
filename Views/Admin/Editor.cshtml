@@ -1,0 +1,61 @@
+﻿@model List<VladyslavOrlovPromo.DataAccess.SlideImage>
+
+@{
+    ViewBag.Title = "Editor";
+}
+
+<h2>Editor</h2>
+
+<a href="/admin/new">Create News</a>
+
+<div style="margin-top: 10px;">
+    <div>
+        <div>
+            <b>Server:</b> mi3-wdb2.a2hosting.com
+        </div>
+        <div>
+            <b>Database:</b> vladysla_atp
+        </div>
+        <div>
+            <b>User:</b> vladysla_dbuser
+        </div>
+        <div>
+            <b>Password:</b> Gex4d%15
+        </div>
+    </div>
+    <pre>
+        &lt;add name="VladyslavOrlovDb" connectionString="data source=mi3-wdb2.a2hosting.com;initial catalog=vladysla_atp;
+user id=vladysla_dbuser;password=Gex4d%15;MultipleActiveResultSets=True;App=EntityFramework" 
+providerName="System.Data.SqlClient" /&gt;  
+    </pre>
+</div>
+
+<div style="margin-top: 20px">
+    <form action="@Url.Action("Editor", "Admin")" enctype="multipart/form-data" method="POST">
+        <ul>
+            @foreach (var image in Model)
+            {
+                <li>
+                    <div style="display: inline-block">
+                        <div>
+                            <input type="text" name="title[@(image.Id)]" value="@image.Title"/>
+                        </div>
+                        <div>
+                            <img src="data:image/png;base64, @Convert.ToBase64String(image.Image)" height="50"/>
+                        </div>
+                        <div>
+                            <input type="file" name="files" value="Attach Image"/>
+                        </div>
+                    </div>
+                    <div style="display: inline-block">
+                        <a href="@Url.Action("DeleteSlide", new { id = image.Id })">Remove</a>
+                    </div>
+                </li>
+            }
+        </ul>
+        <div style="margin-top: 20px">
+            <input type="submit" value="Save"/>
+        </div>
+    </form>
+    <a href="@Url.Action("NewSlide")">Add New Slide</a>
+</div>

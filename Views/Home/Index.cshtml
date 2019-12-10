@@ -1,0 +1,108 @@
+﻿<div>
+    <div class="facebook-feed">
+        <div id="fb-root">
+            <div id="fb-loading">
+                Loading facebook feed
+                <div>
+                    <img src="~/images/loader.gif" alt=""/>
+                </div>
+            </div>
+        </div>
+        <script>
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=1481194158669665';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <script>
+            window.onload = function() {
+                FB.Event.subscribe('xfbml.render', function(response) {
+                    console.log('rendered.... finally!');
+
+                    $('#fb-loading').hide();
+                });
+            };
+        </script>
+        <div class="fb-page" data-href="https://www.facebook.com/vlad1orlov/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+            <blockquote cite="https://www.facebook.com/vlad1orlov/" class="fb-xfbml-parse-ignore">
+                <a href="https://www.facebook.com/vlad1orlov/">Vladyslav Orlov</a>
+            </blockquote>
+        </div>
+    </div>
+    <div class="partners-feed">
+        <h1>PARTNERS</h1>
+        <div class="homeSponsors">
+            <ul>
+                <li>
+                    <a href="https://paka.life/" target="_blank">
+                        <img src="~/images/paka.png" alt=""/>
+                        <div class="sponsorsLink">
+                            https://paka.life/
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.msv-tennis.com/" target="_blank">
+                        <img src="~/images/Logo_MSV_300.png" alt=""/>
+                        <div class="sponsorsLink">
+                            http://www.msv-tennis.com/
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="homeSponsors">
+            <ul>
+                @*<li>
+                    <a href="https://www.mizuno.eu/" target="_blank">
+                        <img src="~/images/mizuno-logo.png" alt=""/>
+                        <div class="sponsorsLink">
+                            https://www.mizuno.eu/
+                        </div>
+                    </a>
+                </li>*@
+                <li>
+                    <a href="https://www.head.com/" target="_blank">
+                        <img src="~/images/head.png" alt=""/>
+                        <div class="sponsorsLink">
+                            https://www.head.com/
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="homeSponsors">
+            <ul>
+                <li>
+                    <a href="http://unicourt.com.ua/" target="_blank">
+                        <img src="~/images/unikort.png" alt=""/>
+                        <div class="sponsorsLink">
+                            http://unicourt.com.ua/
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.univer.kharkov.ua/" target="_blank">
+                        <img src="~/images/knu.gif" alt=""/>
+                        <div class="sponsorsLink">
+                            http://www.univer.kharkov.ua/
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+@*<hr />
+    <div style="text-align: center">
+        <video controls="controls" autoplay loop>
+            <source src="https://scontent-waw1-1.cdninstagram.com/vp/b172662c39d9abb45e87012398b5f855/5AFC3E7A/t50.2886-16/22706975_1496002653802453_5163164075546378240_n.mp4" type="video/mp4">
+        </video>
+        <div>
+            Egypt ITF Futures
+        </div>
+    </div>*@

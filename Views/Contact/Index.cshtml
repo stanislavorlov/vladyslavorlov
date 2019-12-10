@@ -1,0 +1,67 @@
+﻿@model VladyslavOrlovPromo.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <div class="column">
+        <h2>Please find me on social networks</h2>
+
+        <div class="sociallinks">
+            <ul>
+                <li>
+                    <a href="https://www.facebook.com/vlad1orlov/" target="_blank">
+                        <img src="~/images/facebook.png" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/orlovgram/" target="_blank">
+                        <img src="~/images/instagram.png" alt="" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="column">
+        <h2>Send me an email and I'll get back to you</h2>
+        <div class="sentResult">
+            @ViewBag.result
+        </div>
+        <div>
+            <form action="" method="POST" autocomplete="off">
+                <div>
+                    @Html.LabelFor(m => m.FirstName, "Your First Name")
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                    <div>
+                        @Html.ValidationMessageFor(m => m.FirstName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LastName, "Your Last Name")
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                    <div>
+                        @Html.ValidationMessageFor(m => m.LastName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, "Your Email")
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Message)
+                    @Html.TextAreaFor(m => m.Message, new { rows = "50", style = "height: 200px;", @class = "form-control" })
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Message)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-default" type="submit" value="Send"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
