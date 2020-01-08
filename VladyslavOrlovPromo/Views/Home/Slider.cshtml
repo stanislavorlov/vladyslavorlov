@@ -1,0 +1,43 @@
+﻿@model IEnumerable<VladyslavOrlovPromo.DataAccess.SlideImage>
+
+@{
+    Layout = null;
+}
+
+<div id="amazingslider-wrapper-1" class="mainSliderWrapper">
+    <div id="amazingslider-1" class="mainSlider">
+        <ul class="amazingslider-slides" style="display: none;">
+            @foreach (var slideImage in Model)
+            {
+                <li>
+                    <img src="data:image/png;base64, @Convert.ToBase64String(slideImage.Image)" alt="banner" title="@slideImage.Title"/>
+                </li>
+            }
+        </ul>
+        <ul class="amazingslider-thumbnails" style="display: none;">
+            @foreach (var slideImage in Model)
+            {
+                <li>
+                    <img src="data:image/png;base64, @Convert.ToBase64String(slideImage.Image)" width="240" height="120" alt="banner" title="@slideImage.Title"/>
+                </li>
+            }
+        </ul>
+        <div class="amazingslider-engine">
+            <a href="http://amazingslider.com" title="jQuery Slideshow">jQuery Slideshow</a>
+        </div>
+    </div>
+    <div class="mainSliderPromo">
+        Powered by <a href="https://amazingslider.com/">https://amazingslider.com/</a>
+    </div>
+</div>
+@Scripts.Render("~/bundles/slider")
+<script src="~/slider/sliderengine/initslider-1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.amazingslider-box-1 div:not([class])').hide();
+
+        $("#amazingslider-1").bind("amazingslider.switch", function(event, previous, next) {
+            $('.amazingslider-box-1 div:not([class])').hide();
+        });
+    });
+</script>

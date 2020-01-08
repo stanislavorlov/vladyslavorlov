@@ -1,0 +1,32 @@
+﻿@model VladyslavOrlovPromo.Models.PostModel
+
+@{
+    ViewBag.Title = "New";
+}
+
+@Html.ActionLink("Back To List", "Index")
+
+@Html.ValidationSummary()
+
+<h2>New</h2>
+
+<form action="@Url.Action("New")" method="POST">
+    <input type="hidden" name="Id" value="@Model.Id"/>
+
+    <div class="form-group">
+        <div>Title</div>
+        <input type="text" class="form-control" name="title" value="@Model.Title"/>
+    </div>
+
+    <div class="form-group">
+        <div>Body</div>
+        <textarea style="opacity: 0; height: 480px; width: 100%;" id="txtContent" name="body" class="post">@Model.Body</textarea>
+    </div>
+
+    <div class="form-group">
+        <input class="btn btn-default" type="submit" value="Save"/>
+    </div>
+</form>
+
+<script src="/editors/tinymce/tinymce.min.js"></script>
+<script src="/editors/tinymce/editor.js"></script>
