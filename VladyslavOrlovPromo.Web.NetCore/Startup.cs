@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using VladyslavOrlovPromo.Repositories;
-using VladyslavOrlovPromo.Repositories.Interfaces;
+using VladyslavOrlovPromo.Services.Rankings;
 
 namespace VladyslavOrlovPromo.Core
 {
@@ -25,7 +20,8 @@ namespace VladyslavOrlovPromo.Core
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddHttpClient<IRankingRepository, RankingRepository>();
+            services.AddHttpClient<IRankingService, RankingService>();
+            services.AddTransient<IPlayerOverviewFactory, PlayerOverviewFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

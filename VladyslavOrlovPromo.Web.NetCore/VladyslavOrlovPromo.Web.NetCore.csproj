@@ -1,11 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\VladyslavOrlovPromo.Core\VladyslavOrlovPromo.Core.csproj" />
     <ProjectReference Include="..\VladyslavOrlovPromo.Repositories\VladyslavOrlovPromo.Repositories.csproj" />
+    <ProjectReference Include="..\VladyslavOrlovPromo.Services\VladyslavOrlovPromo.Services.csproj" />
   </ItemGroup>
 
 

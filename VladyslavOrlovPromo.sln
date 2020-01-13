@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VladyslavOrlovPromo.Reposit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VladyslavOrlovPromo.Core", "VladyslavOrlovPromo.Core\VladyslavOrlovPromo.Core.csproj", "{CEABAE84-F459-4736-80BB-EEDE115E047E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VladyslavOrlovPromo.Services", "VladyslavOrlovPromo.Services\VladyslavOrlovPromo.Services.csproj", "{364C5154-6463-4BCD-94C3-D6C7914B8F2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{CEABAE84-F459-4736-80BB-EEDE115E047E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEABAE84-F459-4736-80BB-EEDE115E047E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEABAE84-F459-4736-80BB-EEDE115E047E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{364C5154-6463-4BCD-94C3-D6C7914B8F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{364C5154-6463-4BCD-94C3-D6C7914B8F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{364C5154-6463-4BCD-94C3-D6C7914B8F2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{364C5154-6463-4BCD-94C3-D6C7914B8F2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
