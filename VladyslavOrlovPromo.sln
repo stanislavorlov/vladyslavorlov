@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VladyslavOrlovPromo.Web.4.6", "VladyslavOrlovPromo\VladyslavOrlovPromo.Web.4.6.csproj", "{0A51EF08-39D1-4006-AB79-C467C522D457}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VladyslavOrlovPromo.Web.4.6", "VladyslavOrlovPromo.Web.4.6\VladyslavOrlovPromo.Web.4.6.csproj", "{0A51EF08-39D1-4006-AB79-C467C522D457}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VladyslavOrlovPromo.Web.NetCore", "VladyslavOrlovPromo.Core\VladyslavOrlovPromo.Web.NetCore.csproj", "{F9CD44B9-D87B-482C-B45C-A800387B61B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VladyslavOrlovPromo.Web.NetCore", "VladyslavOrlovPromo.Web.NetCore\VladyslavOrlovPromo.Web.NetCore.csproj", "{F9CD44B9-D87B-482C-B45C-A800387B61B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VladyslavOrlovPromo.Repositories", "VladyslavOrlovPromo.Repositories\VladyslavOrlovPromo.Repositories.csproj", "{912DE7DE-F9FC-4463-93B7-455ED85E68D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VladyslavOrlovPromo.Core", "VladyslavOrlovPromo.Core\VladyslavOrlovPromo.Core.csproj", "{CEABAE84-F459-4736-80BB-EEDE115E047E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{F9CD44B9-D87B-482C-B45C-A800387B61B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9CD44B9-D87B-482C-B45C-A800387B61B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9CD44B9-D87B-482C-B45C-A800387B61B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{912DE7DE-F9FC-4463-93B7-455ED85E68D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{912DE7DE-F9FC-4463-93B7-455ED85E68D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{912DE7DE-F9FC-4463-93B7-455ED85E68D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{912DE7DE-F9FC-4463-93B7-455ED85E68D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEABAE84-F459-4736-80BB-EEDE115E047E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEABAE84-F459-4736-80BB-EEDE115E047E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEABAE84-F459-4736-80BB-EEDE115E047E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEABAE84-F459-4736-80BB-EEDE115E047E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
