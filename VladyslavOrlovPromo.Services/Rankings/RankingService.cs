@@ -1,44 +1,48 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Options;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
-using VladyslavOrlovPromo.Core.Dtos;
+using VladyslavOrlovPromo.Core.Configs;
 using VladyslavOrlovPromo.Core.Entities;
 using VladyslavOrlovPromo.Core.Enums;
+using VladyslavOrlovPromo.Core.Exceptions;
 
 namespace VladyslavOrlovPromo.Services.Rankings
 {
     public class RankingService : IRankingService
     {
-        private readonly IConfiguration _configuration;
+        private readonly PlayerProfileConfiguration _playerProfileConfiguration;
         private readonly IPlayerOverviewFactory _playerOverviewFactory;
         private readonly HttpClient _httpClient;
 
-        public RankingService(IConfiguration configuration, IPlayerOverviewFactory playerOverviewFactory, HttpClient httpClient)
+        public RankingService(IOptions<PlayerProfileConfiguration> playerProfileOptions,
+            IPlayerOverviewFactory playerOverviewFactory, 
+            HttpClient httpClient)
         {
-            this._configuration = configuration;
+            this._playerProfileConfiguration = playerProfileOptions.Value;
             this._httpClient = httpClient;
             this._playerOverviewFactory = playerOverviewFactory;
         }
 
         public async Task<PlayerOverview> GetPlayerOverviewAsync(MatchTypeCode matchTypeCode)
         {
-            var requestUrl = _configuration.GetSection("PlayerSettings").GetSection("rankQuery").Value;
-            var playerId = _configuration.GetSection("PlayerSettings").GetSection("playerId").Value;
+            var requestUrl = _playerProfileConfiguration.RankQuery;
+            var playerId = _playerProfileConfiguration.PlayerId;
 
             var rankingUrl = string.Format(requestUrl, matchTypeCode, playerId);
 
-            var responseString = await _httpClient.GetStringAsync(rankingUrl);
-
-            var options = new JsonSerializerOptions
+            using (var request = new HttpRequestMessage(HttpMethod.Get, rankingUrl))
+            using (var response = await _httpClient.SendAsync(request))
             {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                WriteIndented = true
-            };
+                var content = await response.Content.ReadAsStringAsync();
 
-            var rankings = JsonSerializer.Deserialize<RankingDto>(responseString, options);
+                if (response.IsSuccessStatusCode)
+                    return _playerOverviewFactory.Create(content);
 
-            return _playerOverviewFactory.Create(rankings);
+                throw new NetworkException(content) 
+                { 
+                    StatusCode = (int)response.StatusCode 
+                };
+            }
         }
     }
 }

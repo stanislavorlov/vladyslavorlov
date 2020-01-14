@@ -1,0 +1,53 @@
+﻿@model VladyslavOrlovPromo.Web.NetCore.Models.RankingViewModel
+@using VladyslavOrlovPromo.Web.NetCore.Models
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Vladyslav Orlov Overview</h1>
+
+<div>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#singles" role="tab" aria-controls="singles" aria-selected="true">Singles</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#doubles" role="tab" aria-controls="doubles" aria-selected="false">Doubles</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="singles" class="tab-pane fade show active" role="tabpanel">
+            <dl class="row"></dl>
+            <div class="container">
+                <div class="row card-title">Current Rankings</div>
+                @await Html.PartialAsync("RankingPartial", new RankingPartialDisplayModel 
+                { LeftTitle = "ATP Singles Ranking", LeftRank = Model.Singles.Atp.Current, RightTitle = "ITF Singles Ranking", RightRank = Model.Singles.Itf.Current  })
+                <div class="row card-title mt-5">Career-High Rankings</div>
+                @await Html.PartialAsync("RankingPartial", new RankingPartialDisplayModel
+                { LeftTitle = $"ATP Singles Ranking ({Model.Singles.Atp.HighestDate})", LeftRank = Model.Singles.Atp.Highest, 
+               RightTitle = $"ITF Singles Ranking ({Model.Singles.Itf.HighestDate})", RightRank = Model.Singles.Itf.Highest })
+            </div>
+        </div>
+        <div id="doubles" class="tab-pane fade" role="tabpanel">
+            <dl class="row"></dl>
+            <div class="container">
+                <div class="row card-title">Current Rankings</div>
+                @await Html.PartialAsync("RankingPartial", new RankingPartialDisplayModel
+                { LeftTitle = "ATP Doubles Ranking", LeftRank = Model.Doubles.Atp.Current, RightTitle = "ITF Doubles Ranking", RightRank = Model.Doubles.Itf.Current })
+                <div class="row card-title mt-5">Career-High Rankings</div>
+                @await Html.PartialAsync("RankingPartial", new RankingPartialDisplayModel
+                { LeftTitle = $"ATP Doubles ({Model.Doubles.Atp.HighestDate})", LeftRank = Model.Doubles.Atp.Highest, 
+                    RightTitle = $"ITF Doubles ({Model.Doubles.Itf.HighestDate})", RightRank = Model.Doubles.Itf.Highest })
+            </div>
+        </div>
+    </div>
+
+    <dl class="row">
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

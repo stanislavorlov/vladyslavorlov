@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using VladyslavOrlovPromo.Core.Configs;
 using VladyslavOrlovPromo.Services.Rankings;
 
 namespace VladyslavOrlovPromo.Core
@@ -20,6 +21,12 @@ namespace VladyslavOrlovPromo.Core
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddOptions();
+            services.Configure<PlayerProfileConfiguration>(Configuration.GetSection("PlayerProfile"));
+            services.Configure<SliderStorageConfiguration>(Configuration.GetSection("SliderStorage"));
+            services.AddSingleton(Configuration);
+
             services.AddHttpClient<IRankingService, RankingService>();
             services.AddTransient<IPlayerOverviewFactory, PlayerOverviewFactory>();
         }

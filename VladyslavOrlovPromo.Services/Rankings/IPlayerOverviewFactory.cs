@@ -5,6 +5,6 @@ namespace VladyslavOrlovPromo.Services.Rankings
 {
     public interface IPlayerOverviewFactory
     {
-        PlayerOverview Create(RankingDto rankingDto);
+        PlayerOverview Create(string json);
     }
 }

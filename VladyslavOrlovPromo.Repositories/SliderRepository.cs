@@ -1,23 +1,26 @@
-﻿using Microsoft.WindowsAzure.Storage;
+﻿using Microsoft.Extensions.Options;
+using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
+using VladyslavOrlovPromo.Core.Configs;
 
 namespace VladyslavOrlovPromo.Repositories
 {
     public class SliderRepository
     {
-        private string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=voslider;AccountKey=4KNcVtxgqi82CceUGWMM+PG2pM2iTabaz3FfpiQnHyw6L4Sn+603QbVfR5QEbtYsBpyRJCQiCiNrG/RqzYjOPw==;EndpointSuffix=core.windows.net";
+        private readonly SliderStorageConfiguration _sliderStorageConfig;
 
-        public SliderRepository()
+        public SliderRepository(IOptions<SliderStorageConfiguration> sliderStorageConfig)
         {
-
+            _sliderStorageConfig = sliderStorageConfig.Value;
         }
 
         public async Task<string> Fetch()
         {
+            var storageConnectionString = _sliderStorageConfig.ConnectionString;
             CloudStorageAccount account = CloudStorageAccount.Parse(storageConnectionString);
+
             CloudBlobClient serviceClient = account.CreateCloudBlobClient();
 
             var container = serviceClient.GetContainerReference("slidercontainer");

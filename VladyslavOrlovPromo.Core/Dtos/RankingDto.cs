@@ -1,4 +1,6 @@
-﻿namespace VladyslavOrlovPromo.Core.Dtos
+﻿using System;
+
+namespace VladyslavOrlovPromo.Core.Dtos
 {
     public class RankingItemDto
     {

@@ -17,7 +17,7 @@ namespace VladyslavOrlovPromo.Core
                 {
                     webBuilder.ConfigureAppConfiguration((builderContent, config) =>
                     {
-                        config.AddJsonFile("appsettings.json");
+                        config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
                     });
                     webBuilder.UseStartup<Startup>();
                 });
