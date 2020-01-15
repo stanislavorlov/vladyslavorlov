@@ -4,7 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VladyslavOrlovPromo.Core.Configs;
-using VladyslavOrlovPromo.Services.Rankings;
+using VladyslavOrlovPromo.Services.Rankings.Factories;
+using VladyslavOrlovPromo.Services.Rankings.Interfaces;
+using VladyslavOrlovPromo.Services.Rankings.Services;
 
 namespace VladyslavOrlovPromo.Core
 {

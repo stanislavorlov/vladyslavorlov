@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using VladyslavOrlovPromo.Core.Enums;
-using VladyslavOrlovPromo.Services.Rankings;
+using VladyslavOrlovPromo.Services.Rankings.Interfaces;
 using VladyslavOrlovPromo.Web.NetCore.Models;
 
 namespace VladyslavOrlovPromo.Web.NetCore.Controllers

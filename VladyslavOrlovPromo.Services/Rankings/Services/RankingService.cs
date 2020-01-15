@@ -5,8 +5,9 @@ using VladyslavOrlovPromo.Core.Configs;
 using VladyslavOrlovPromo.Core.Entities;
 using VladyslavOrlovPromo.Core.Enums;
 using VladyslavOrlovPromo.Core.Exceptions;
+using VladyslavOrlovPromo.Services.Rankings.Interfaces;
 
-namespace VladyslavOrlovPromo.Services.Rankings
+namespace VladyslavOrlovPromo.Services.Rankings.Services
 {
     public class RankingService : IRankingService
     {
@@ -15,12 +16,12 @@ namespace VladyslavOrlovPromo.Services.Rankings
         private readonly HttpClient _httpClient;
 
         public RankingService(IOptions<PlayerProfileConfiguration> playerProfileOptions,
-            IPlayerOverviewFactory playerOverviewFactory, 
+            IPlayerOverviewFactory playerOverviewFactory,
             HttpClient httpClient)
         {
-            this._playerProfileConfiguration = playerProfileOptions.Value;
-            this._httpClient = httpClient;
-            this._playerOverviewFactory = playerOverviewFactory;
+            _playerProfileConfiguration = playerProfileOptions.Value;
+            _httpClient = httpClient;
+            _playerOverviewFactory = playerOverviewFactory;
         }
 
         public async Task<PlayerOverview> GetPlayerOverviewAsync(MatchTypeCode matchTypeCode)
@@ -38,9 +39,9 @@ namespace VladyslavOrlovPromo.Services.Rankings
                 if (response.IsSuccessStatusCode)
                     return _playerOverviewFactory.Create(content);
 
-                throw new NetworkException(content) 
-                { 
-                    StatusCode = (int)response.StatusCode 
+                throw new NetworkException(content)
+                {
+                    StatusCode = (int)response.StatusCode
                 };
             }
         }
