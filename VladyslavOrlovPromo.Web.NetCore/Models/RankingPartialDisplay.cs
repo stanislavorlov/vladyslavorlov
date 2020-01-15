@@ -1,6 +1,6 @@
 ﻿namespace VladyslavOrlovPromo.Web.NetCore.Models
 {
-    public class RankingPartialDisplayModel
+    public class RankingPartialDisplay
     {
         public string LeftTitle { get; set; }
 

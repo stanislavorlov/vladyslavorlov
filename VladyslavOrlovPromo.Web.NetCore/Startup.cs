@@ -7,6 +7,7 @@ using VladyslavOrlovPromo.Core.Configs;
 using VladyslavOrlovPromo.Services.Rankings.Factories;
 using VladyslavOrlovPromo.Services.Rankings.Interfaces;
 using VladyslavOrlovPromo.Services.Rankings.Services;
+using VladyslavOrlovPromo.Web.NetCore.Models.Builder;
 
 namespace VladyslavOrlovPromo.Core
 {
@@ -28,6 +29,8 @@ namespace VladyslavOrlovPromo.Core
             services.Configure<PlayerProfileConfiguration>(Configuration.GetSection("PlayerProfile"));
             services.Configure<SliderStorageConfiguration>(Configuration.GetSection("SliderStorage"));
             services.AddSingleton(Configuration);
+
+            services.AddTransient<IRankingViewModelBuilder, RankingViewModelBuilder>();
 
             services.AddHttpClient<IRankingService, RankingService>();
             services.AddTransient<IPlayerOverviewFactory, PlayerOverviewFactory>();
