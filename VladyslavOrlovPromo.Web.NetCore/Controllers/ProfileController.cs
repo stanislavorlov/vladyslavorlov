@@ -24,8 +24,8 @@ namespace VladyslavOrlovPromo.Web.NetCore.Controllers
         {
             _logger.LogInformation("Profile/Index action gets called");
 
-            var singlesOverview = await _rankingService.GetPlayerOverviewAsync(MatchTypeCode.S);
-            var doublesOverview = await _rankingService.GetPlayerOverviewAsync(MatchTypeCode.D);
+            var singlesOverview = await _rankingService.GetPlayerOverviewAsync(MatchTypeCode.Singles);
+            var doublesOverview = await _rankingService.GetPlayerOverviewAsync(MatchTypeCode.Doubles);
 
             _rankingModelBuilder.BuildSinglesPart(singlesOverview);
             _rankingModelBuilder.BuildDoublesPart(doublesOverview);

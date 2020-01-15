@@ -1,4 +1,7 @@
-﻿using VladyslavOrlovPromo.Core.Entities;
+﻿using System;
+using System.Reflection;
+using VladyslavOrlovPromo.Core.Entities;
+using VladyslavOrlovPromo.Core.Enums;
 
 namespace VladyslavOrlovPromo.Web.NetCore.Models.Builder
 {
@@ -13,49 +16,43 @@ namespace VladyslavOrlovPromo.Web.NetCore.Models.Builder
 
         public void BuildSinglesPart(PlayerOverview singles)
         {
-            _rankingViewModel.Singles = new RankingType
-            {
-                Current = new RankingPartialDisplay
-                {
-                    LeftTitle = "ATP Singles Ranking",
-                    LeftRank = singles.AtpCurrent,
-                    RightTitle = "ITF Singles Ranking",
-                    RightRank = singles.ItfCurrent
-                },
-                Highest = new RankingPartialDisplay
-                {
-                    LeftTitle = $"ATP Singles Ranking ({singles.AtpCareerHighDate.ToString("dd MMM yyyy")})",
-                    LeftRank = singles.AtpCareerHigh,
-                    RightTitle = $"ITF Singles Ranking ({singles.ItfCareerHighDate.ToString("dd MMM yyyy")})",
-                    RightRank = singles.ItfCareerHigh
-                }
-            };
+            BuildRankingPart(singles, MatchTypeCode.Singles);
         }
 
         public void BuildDoublesPart(PlayerOverview doubles)
         {
-            _rankingViewModel.Doubles = new RankingType
-            {
-                Current = new RankingPartialDisplay
-                {
-                    LeftTitle = "ATP Doubles Ranking",
-                    LeftRank = doubles.AtpCurrent,
-                    RightTitle = "ITF Doubles Ranking",
-                    RightRank = doubles.ItfCurrent
-                },
-                Highest = new RankingPartialDisplay
-                {
-                    LeftTitle = $"ATP Doubles ({doubles.AtpCareerHighDate.ToString("dd MMM yyyy")})",
-                    LeftRank = doubles.AtpCareerHigh,
-                    RightTitle = $"ITF Doubles ({doubles.ItfCareerHighDate.ToString("dd MMM yyyy")})",
-                    RightRank = doubles.ItfCareerHigh
-                }
-            };
+            BuildRankingPart(doubles, MatchTypeCode.Doubles);
         }
 
         public RankingViewModel GetRankingView()
         {
             return _rankingViewModel;
+        }
+
+        private void BuildRankingPart(PlayerOverview playerOverview, MatchTypeCode matchTypeCode)
+        {
+            Type rankingVmType = typeof(RankingViewModel);
+            PropertyInfo propertyInfo = rankingVmType.GetProperty(matchTypeCode.Title);
+            if (propertyInfo != null)
+            {
+                propertyInfo.SetValue(_rankingViewModel, new RankingType
+                {
+                    Current = new RankingPartialDisplay
+                    {
+                        LeftTitle = $"ATP {matchTypeCode.Title} Ranking",
+                        LeftRank = playerOverview.AtpCurrent,
+                        RightTitle = $"ITF {matchTypeCode.Title} Ranking",
+                        RightRank = playerOverview.ItfCurrent
+                    },
+                    Highest = new RankingPartialDisplay
+                    {
+                        LeftTitle = $"ATP {matchTypeCode.Title} Ranking ({playerOverview.AtpCareerHighDate.ToString("dd MMM yyyy")})",
+                        LeftRank = playerOverview.AtpCareerHigh,
+                        RightTitle = $"ITF {matchTypeCode.Title} Ranking ({playerOverview.ItfCareerHighDate.ToString("dd MMM yyyy")})",
+                        RightRank = playerOverview.ItfCareerHigh
+                    }
+                });
+            }
         }
     }
 }
