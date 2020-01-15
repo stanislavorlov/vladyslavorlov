@@ -18,22 +18,10 @@
 
     <div class="tab-content">
         <div id="singles" class="tab-pane fade show active" role="tabpanel">
-            <dl class="row"></dl>
-            <div class="container">
-                <div class="row card-title">Current Rankings</div>
-                @await Html.PartialAsync("RankingPartial", Model.Singles.Current)
-                <div class="row card-title mt-5">Career-High Rankings</div>
-                @await Html.PartialAsync("RankingPartial", Model.Singles.Highest)
-            </div>
+            @await Html.PartialAsync("RankingTypePartial", Model.Singles)
         </div>
         <div id="doubles" class="tab-pane fade" role="tabpanel">
-            <dl class="row"></dl>
-            <div class="container">
-                <div class="row card-title">Current Rankings</div>
-                @await Html.PartialAsync("RankingPartial", Model.Doubles.Current)
-                <div class="row card-title mt-5">Career-High Rankings</div>
-                @await Html.PartialAsync("RankingPartial", Model.Doubles.Highest)
-            </div>
+            @await Html.PartialAsync("RankingTypePartial", Model.Doubles)
         </div>
     </div>
 
