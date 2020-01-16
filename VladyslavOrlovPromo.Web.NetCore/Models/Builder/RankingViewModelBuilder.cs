@@ -1,27 +1,36 @@
 ﻿using System;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using VladyslavOrlovPromo.Core.Entities;
 using VladyslavOrlovPromo.Core.Enums;
+using VladyslavOrlovPromo.Services.Rankings.Interfaces;
 
 namespace VladyslavOrlovPromo.Web.NetCore.Models.Builder
 {
     internal class RankingViewModelBuilder : IRankingViewModelBuilder
     {
         private readonly RankingViewModel _rankingViewModel;
+        private readonly IRankingService _rankingService;
 
-        public RankingViewModelBuilder()
+        public RankingViewModelBuilder(IRankingService rankingService)
         {
             _rankingViewModel = new RankingViewModel();
+            _rankingService = rankingService;
         }
 
-        public void BuildSinglesPart(PlayerOverview singles)
+        public async Task BuildSinglesPartAsync(CancellationToken cancellationToken)
         {
-            BuildRankingPart(singles, MatchTypeCode.Singles);
+            var singlesOverview = await _rankingService.GetPlayerOverviewAsync(MatchTypeCode.Singles, cancellationToken);
+
+            BuildRankingPart(singlesOverview, MatchTypeCode.Singles);
         }
 
-        public void BuildDoublesPart(PlayerOverview doubles)
+        public async Task BuildDoublesPartAsync(CancellationToken cancellationToken)
         {
-            BuildRankingPart(doubles, MatchTypeCode.Doubles);
+            var doublesOverview = await _rankingService.GetPlayerOverviewAsync(MatchTypeCode.Doubles, cancellationToken);
+
+            BuildRankingPart(doublesOverview, MatchTypeCode.Doubles);
         }
 
         public RankingViewModel GetRankingView()

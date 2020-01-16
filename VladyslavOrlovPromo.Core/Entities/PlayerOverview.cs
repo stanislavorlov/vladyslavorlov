@@ -1,9 +1,12 @@
 ﻿using System;
+using VladyslavOrlovPromo.Core.Enums;
 
 namespace VladyslavOrlovPromo.Core.Entities
 {
     public class PlayerOverview
     {
+        protected MatchTypeCode MatchTypeCode;
+
         public PlayerOverview(int atpHigh, int itfHigh, string atpHighDate, string itfHighDate, int atpCurrent, int itfCurrent)
         {
             AtpCareerHigh = atpHigh;

@@ -1,12 +1,13 @@
-﻿using VladyslavOrlovPromo.Core.Entities;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace VladyslavOrlovPromo.Web.NetCore.Models.Builder
 {
     public interface IRankingViewModelBuilder
     {
-        void BuildSinglesPart(PlayerOverview singles);
+        Task BuildSinglesPartAsync(CancellationToken cancellationToken);
 
-        void BuildDoublesPart(PlayerOverview doubles);
+        Task BuildDoublesPartAsync(CancellationToken cancellationToken);
 
         RankingViewModel GetRankingView();
     }

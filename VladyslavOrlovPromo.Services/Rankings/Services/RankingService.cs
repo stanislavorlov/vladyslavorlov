@@ -25,6 +25,7 @@ namespace VladyslavOrlovPromo.Services.Rankings.Services
             _playerOverviewFactory = playerOverviewFactory;
         }
 
+        // MatchTypeCode here is Open Closed Principle violation
         public async Task<PlayerOverview> GetPlayerOverviewAsync(MatchTypeCode matchTypeCode, CancellationToken cancellationToken)
         {
             var requestUrl = _playerProfileConfiguration.RankQuery;
