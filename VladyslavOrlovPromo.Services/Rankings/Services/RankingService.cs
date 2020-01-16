@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using VladyslavOrlovPromo.Core.Configs;
 using VladyslavOrlovPromo.Core.Entities;
@@ -24,7 +25,7 @@ namespace VladyslavOrlovPromo.Services.Rankings.Services
             _playerOverviewFactory = playerOverviewFactory;
         }
 
-        public async Task<PlayerOverview> GetPlayerOverviewAsync(MatchTypeCode matchTypeCode)
+        public async Task<PlayerOverview> GetPlayerOverviewAsync(MatchTypeCode matchTypeCode, CancellationToken cancellationToken)
         {
             var requestUrl = _playerProfileConfiguration.RankQuery;
             var playerId = _playerProfileConfiguration.PlayerId;
@@ -32,7 +33,7 @@ namespace VladyslavOrlovPromo.Services.Rankings.Services
             var rankingUrl = string.Format(requestUrl, matchTypeCode, playerId);
 
             using (var request = new HttpRequestMessage(HttpMethod.Get, rankingUrl))
-            using (var response = await _httpClient.SendAsync(request))
+            using (var response = await _httpClient.SendAsync(request, cancellationToken))
             {
                 var content = await response.Content.ReadAsStringAsync();
 

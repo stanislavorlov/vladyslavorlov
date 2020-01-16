@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Threading;
 using System.Threading.Tasks;
 using VladyslavOrlovPromo.Core.Enums;
 using VladyslavOrlovPromo.Services.Rankings.Interfaces;
@@ -20,12 +21,12 @@ namespace VladyslavOrlovPromo.Web.NetCore.Controllers
             _rankingModelBuilder = rankingViewModelBuilder;
         }
 
-        public async Task<IActionResult> IndexAsync()
+        public async Task<IActionResult> IndexAsync(CancellationToken cancellationToken)
         {
             _logger.LogInformation("Profile/Index action gets called");
 
-            var singlesOverview = await _rankingService.GetPlayerOverviewAsync(MatchTypeCode.Singles);
-            var doublesOverview = await _rankingService.GetPlayerOverviewAsync(MatchTypeCode.Doubles);
+            var singlesOverview = await _rankingService.GetPlayerOverviewAsync(MatchTypeCode.Singles, cancellationToken);
+            var doublesOverview = await _rankingService.GetPlayerOverviewAsync(MatchTypeCode.Doubles, cancellationToken);
 
             _rankingModelBuilder.BuildSinglesPart(singlesOverview);
             _rankingModelBuilder.BuildDoublesPart(doublesOverview);
