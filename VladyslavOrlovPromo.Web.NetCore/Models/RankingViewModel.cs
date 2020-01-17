@@ -2,8 +2,8 @@
 {
     public class RankingViewModel
     {
-        public RankingType Singles { get; set; }
+        public RankingPartialDisplay Current { get; set; }
 
-        public RankingType Doubles { get; set; }
+        public RankingPartialDisplay Highest { get; set; }
     }
 }

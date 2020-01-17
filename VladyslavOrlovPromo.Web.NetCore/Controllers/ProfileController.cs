@@ -1,35 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Threading;
-using System.Threading.Tasks;
-using VladyslavOrlovPromo.Core.Enums;
-using VladyslavOrlovPromo.Services.Rankings.Interfaces;
-using VladyslavOrlovPromo.Web.NetCore.Models.Builder;
 
 namespace VladyslavOrlovPromo.Web.NetCore.Controllers
 {
     public class ProfileController : Controller
     {
         private readonly ILogger<ProfileController> _logger;
-        private readonly IRankingViewModelBuilder _rankingModelBuilder;
 
-        public ProfileController(ILogger<ProfileController> logger, IRankingViewModelBuilder rankingViewModelBuilder)
+        public ProfileController(ILogger<ProfileController> logger)
         {
             _logger = logger;
-            _rankingModelBuilder = rankingViewModelBuilder;
         }
 
-        public async Task<IActionResult> IndexAsync(CancellationToken cancellationToken)
+        public IActionResult Index()
         {
             _logger.LogInformation("Profile/Index action gets called");
-            
-            //Violation of Open-Closed SOLID principle here            
-            await _rankingModelBuilder.BuildSinglesPartAsync(cancellationToken);
-            await _rankingModelBuilder.BuildDoublesPartAsync(cancellationToken);
 
-            var rankViewModel = _rankingModelBuilder.GetRankingView();
-
-            return View(rankViewModel);
+            return View();
         }
     }
 }

@@ -16,6 +16,21 @@
 
         public static MatchTypeCode Doubles { get { return new MatchTypeCode("D", nameof(Doubles)); } }
 
+        public static MatchTypeCode Parse(string value)
+        {
+            switch (value.ToLower())
+            {
+                case "s":
+                case "singles":
+                    return Singles;
+                case "d":
+                case "doubles":
+                    return Doubles;
+                default:
+                    return null;
+            }
+        }
+
         public override string ToString()
         {
             return Value;

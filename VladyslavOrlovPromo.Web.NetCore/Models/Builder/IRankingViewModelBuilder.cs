@@ -1,14 +1,10 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using VladyslavOrlovPromo.Core.Entities;
+using VladyslavOrlovPromo.Core.Enums;
 
 namespace VladyslavOrlovPromo.Web.NetCore.Models.Builder
 {
     public interface IRankingViewModelBuilder
     {
-        Task BuildSinglesPartAsync(CancellationToken cancellationToken);
-
-        Task BuildDoublesPartAsync(CancellationToken cancellationToken);
-
-        RankingViewModel GetRankingView();
+        RankingViewModel GetRankingViewModel(PlayerOverview playerOverview, MatchTypeCode matchTypeCode);
     }
 }
