@@ -1,11 +1,10 @@
 ﻿using Microsoft.Extensions.Options;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using VladyslavOrlovPromo.Core.Configs;
 using VladyslavOrlovPromo.Core.Entities;
 using VladyslavOrlovPromo.Core.Enums;
-using VladyslavOrlovPromo.Core.Exceptions;
+using VladyslavOrlovPromo.Repositories.Interfaces;
 using VladyslavOrlovPromo.Services.Rankings.Interfaces;
 
 namespace VladyslavOrlovPromo.Services.Rankings.Services
@@ -14,14 +13,14 @@ namespace VladyslavOrlovPromo.Services.Rankings.Services
     {
         private readonly PlayerProfileConfiguration _playerProfileConfiguration;
         private readonly IPlayerOverviewFactory _playerOverviewFactory;
-        private readonly HttpClient _httpClient;
+        private readonly IRequestRepository _requestRepository;
 
         public RankingService(IOptions<PlayerProfileConfiguration> playerProfileOptions,
             IPlayerOverviewFactory playerOverviewFactory,
-            HttpClient httpClient)
+            IRequestRepository requestRepository)
         {
             _playerProfileConfiguration = playerProfileOptions.Value;
-            _httpClient = httpClient;
+            _requestRepository = requestRepository;
             _playerOverviewFactory = playerOverviewFactory;
         }
 
@@ -32,19 +31,9 @@ namespace VladyslavOrlovPromo.Services.Rankings.Services
 
             var rankingUrl = string.Format(requestUrl, matchTypeCode, playerId);
 
-            using (var request = new HttpRequestMessage(HttpMethod.Get, rankingUrl))
-            using (var response = await _httpClient.SendAsync(request, cancellationToken))
-            {
-                var content = await response.Content.ReadAsStringAsync();
+            var response = await _requestRepository.SendHttpGetRequestAsync(rankingUrl, cancellationToken);
 
-                if (response.IsSuccessStatusCode)
-                    return _playerOverviewFactory.Create(content);
-
-                throw new NetworkException(content)
-                {
-                    StatusCode = (int)response.StatusCode
-                };
-            }
+            return _playerOverviewFactory.Create(response);
         }
     }
 }

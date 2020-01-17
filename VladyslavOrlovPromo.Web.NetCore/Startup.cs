@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VladyslavOrlovPromo.Core.Configs;
+using VladyslavOrlovPromo.Repositories;
+using VladyslavOrlovPromo.Repositories.Interfaces;
 using VladyslavOrlovPromo.Services.Rankings.Factories;
 using VladyslavOrlovPromo.Services.Rankings.Interfaces;
 using VladyslavOrlovPromo.Services.Rankings.Services;
@@ -32,8 +34,10 @@ namespace VladyslavOrlovPromo.Core
 
             services.AddTransient<IRankingViewModelBuilder, RankingViewModelBuilder>();
 
-            services.AddHttpClient<IRankingService, RankingService>();
+            services.AddHttpClient<IRequestRepository, RequestRepository>();
             services.AddTransient<IPlayerOverviewFactory, PlayerOverviewFactory>();
+
+            services.AddTransient<IRankingService, RankingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
