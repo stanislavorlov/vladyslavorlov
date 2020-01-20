@@ -1,6 +1,6 @@
 ﻿using VladyslavOrlovPromo.Core.Entities;
 
-namespace VladyslavOrlovPromo.Services.Rankings.Interfaces
+namespace VladyslavOrlovPromo.Services.PlayerOverviews.Interfaces
 {
     public interface IPlayerOverviewFactory
     {

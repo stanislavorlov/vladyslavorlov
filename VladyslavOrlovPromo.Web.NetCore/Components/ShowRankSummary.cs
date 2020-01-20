@@ -2,17 +2,17 @@
 using System.Threading;
 using System.Threading.Tasks;
 using VladyslavOrlovPromo.Core.Enums;
-using VladyslavOrlovPromo.Services.Rankings.Interfaces;
+using VladyslavOrlovPromo.Services.PlayerOverviews.Interfaces;
 using VladyslavOrlovPromo.Web.NetCore.Models.Builder;
 
 namespace VladyslavOrlovPromo.Web.NetCore.Components
 {
     public class ShowRankSummary : ViewComponent
     {
-        private readonly IRankingService _rankingService;
+        private readonly IPlayerOverviewService _rankingService;
         private readonly IRankingViewModelBuilder _rankVMBuilder;
 
-        public ShowRankSummary(IRankingService rankingService, IRankingViewModelBuilder rankingViewModelBuilder)
+        public ShowRankSummary(IPlayerOverviewService rankingService, IRankingViewModelBuilder rankingViewModelBuilder)
         {
             _rankingService = rankingService;
             _rankVMBuilder = rankingViewModelBuilder;

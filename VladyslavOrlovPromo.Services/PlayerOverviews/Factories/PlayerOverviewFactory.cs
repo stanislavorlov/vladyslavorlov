@@ -2,9 +2,9 @@
 using System.Text.Json;
 using VladyslavOrlovPromo.Core.Dtos;
 using VladyslavOrlovPromo.Core.Entities;
-using VladyslavOrlovPromo.Services.Rankings.Interfaces;
+using VladyslavOrlovPromo.Services.PlayerOverviews.Interfaces;
 
-namespace VladyslavOrlovPromo.Services.Rankings.Factories
+namespace VladyslavOrlovPromo.Services.PlayerOverviews.Factories
 {
     public class PlayerOverviewFactory : IPlayerOverviewFactory
     {

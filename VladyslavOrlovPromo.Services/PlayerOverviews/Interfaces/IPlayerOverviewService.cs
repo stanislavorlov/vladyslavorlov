@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using VladyslavOrlovPromo.Core.Entities;
 using VladyslavOrlovPromo.Core.Enums;
 
-namespace VladyslavOrlovPromo.Services.Rankings.Interfaces
+namespace VladyslavOrlovPromo.Services.PlayerOverviews.Interfaces
 {
-    public interface IRankingService
+    public interface IPlayerOverviewService
     {
         Task<PlayerOverview> GetPlayerOverviewAsync(MatchTypeCode matchTypeCode, CancellationToken cancellationToken);
     }

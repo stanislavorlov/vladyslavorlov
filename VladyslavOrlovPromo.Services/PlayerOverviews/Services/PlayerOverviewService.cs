@@ -5,35 +5,32 @@ using VladyslavOrlovPromo.Core.Configs;
 using VladyslavOrlovPromo.Core.Entities;
 using VladyslavOrlovPromo.Core.Enums;
 using VladyslavOrlovPromo.Repositories.Interfaces;
-using VladyslavOrlovPromo.Services.Rankings.Interfaces;
+using VladyslavOrlovPromo.Services.PlayerOverviews.Interfaces;
 
-namespace VladyslavOrlovPromo.Services.Rankings.Services
+namespace VladyslavOrlovPromo.Services.PlayerOverviews.Services
 {
-    public class RankingService : IRankingService
+    public class PlayerOverviewService : IPlayerOverviewService
     {
-        private readonly PlayerProfileConfiguration _playerProfileConfiguration;
+        private readonly PlayerOverviewConfiguration _playerOverviewConfiguration;
         private readonly IPlayerOverviewFactory _playerOverviewFactory;
         private readonly IRequestRepository _requestRepository;
 
-        public RankingService(IOptions<PlayerProfileConfiguration> playerProfileOptions,
+        public PlayerOverviewService(IOptions<PlayerOverviewConfiguration> playerOverviewOptions,
             IPlayerOverviewFactory playerOverviewFactory,
             IRequestRepository requestRepository)
         {
-            _playerProfileConfiguration = playerProfileOptions.Value;
+            _playerOverviewConfiguration = playerOverviewOptions.Value;
             _requestRepository = requestRepository;
             _playerOverviewFactory = playerOverviewFactory;
         }
 
         public async Task<PlayerOverview> GetPlayerOverviewAsync(MatchTypeCode matchTypeCode, CancellationToken cancellationToken)
         {
-            var requestUrl = _playerProfileConfiguration.RankQuery;
-            var playerId = _playerProfileConfiguration.PlayerId;
+            var requestUrl = string.Format(_playerOverviewConfiguration.RequestUrl, matchTypeCode, _playerOverviewConfiguration.PlayerId);
 
-            var rankingUrl = string.Format(requestUrl, matchTypeCode, playerId);
+            var responseContent = await _requestRepository.SendHttpGetRequestAsync(requestUrl, cancellationToken);
 
-            var response = await _requestRepository.SendHttpGetRequestAsync(rankingUrl, cancellationToken);
-
-            return _playerOverviewFactory.Create(response);
+            return _playerOverviewFactory.Create(responseContent);
         }
     }
 }

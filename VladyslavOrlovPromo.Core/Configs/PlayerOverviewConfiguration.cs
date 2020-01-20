@@ -1,9 +1,9 @@
 ﻿namespace VladyslavOrlovPromo.Core.Configs
 {
-    public class PlayerProfileConfiguration
+    public class PlayerOverviewConfiguration
     {
         public int PlayerId { get; set; }
 
-        public string RankQuery { get; set; }
+        public string RequestUrl { get; set; }
     }
 }

@@ -6,9 +6,9 @@ using Microsoft.Extensions.Hosting;
 using VladyslavOrlovPromo.Core.Configs;
 using VladyslavOrlovPromo.Repositories;
 using VladyslavOrlovPromo.Repositories.Interfaces;
-using VladyslavOrlovPromo.Services.Rankings.Factories;
-using VladyslavOrlovPromo.Services.Rankings.Interfaces;
-using VladyslavOrlovPromo.Services.Rankings.Services;
+using VladyslavOrlovPromo.Services.PlayerOverviews.Factories;
+using VladyslavOrlovPromo.Services.PlayerOverviews.Interfaces;
+using VladyslavOrlovPromo.Services.PlayerOverviews.Services;
 using VladyslavOrlovPromo.Web.NetCore.Models.Builder;
 
 namespace VladyslavOrlovPromo.Core
@@ -28,7 +28,7 @@ namespace VladyslavOrlovPromo.Core
             services.AddControllersWithViews();
 
             services.AddOptions();
-            services.Configure<PlayerProfileConfiguration>(Configuration.GetSection("PlayerProfile"));
+            services.Configure<PlayerOverviewConfiguration>(Configuration.GetSection("PlayerOverview"));
             services.Configure<SliderStorageConfiguration>(Configuration.GetSection("SliderStorage"));
             services.AddSingleton(Configuration);
 
@@ -37,7 +37,7 @@ namespace VladyslavOrlovPromo.Core
             services.AddHttpClient<IRequestRepository, RequestRepository>();
             services.AddTransient<IPlayerOverviewFactory, PlayerOverviewFactory>();
 
-            services.AddTransient<IRankingService, RankingService>();
+            services.AddTransient<IPlayerOverviewService, PlayerOverviewService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
