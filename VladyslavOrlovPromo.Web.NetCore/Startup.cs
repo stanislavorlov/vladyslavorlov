@@ -37,6 +37,8 @@ namespace VladyslavOrlovPromo.Core
             services.AddHttpClient<IRequestRepository, RequestRepository>();
             services.AddTransient<IPlayerOverviewFactory, PlayerOverviewFactory>();
 
+            services.AddTransient<ISliderRepository, SliderRepository>();
+
             services.AddTransient<IPlayerOverviewService, PlayerOverviewService>();
         }
 

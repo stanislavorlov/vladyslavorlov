@@ -2,6 +2,8 @@
 {
     public class SliderStorageConfiguration
     {
-        public string ConnectionString { get; set; }
+        public string VaultUri { get; set; }
+
+        public string SecretName { get; set; }
     }
 }

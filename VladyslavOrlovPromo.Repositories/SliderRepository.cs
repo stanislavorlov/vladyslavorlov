@@ -1,25 +1,31 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using Microsoft.Extensions.Options;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using VladyslavOrlovPromo.Core.Configs;
+using VladyslavOrlovPromo.Repositories.Interfaces;
 
 namespace VladyslavOrlovPromo.Repositories
 {
-    public class SliderRepository
+    public class SliderRepository : ISliderRepository
     {
-        private readonly SliderStorageConfiguration _sliderStorageConfig;
+        private readonly SliderStorageConfiguration _sliderStorageConfiguration;
 
         public SliderRepository(IOptions<SliderStorageConfiguration> sliderStorageConfig)
         {
-            _sliderStorageConfig = sliderStorageConfig.Value;
+            _sliderStorageConfiguration = sliderStorageConfig.Value;
         }
 
         public async Task<string> Fetch()
         {
-            var storageConnectionString = _sliderStorageConfig.ConnectionString;
-            CloudStorageAccount account = CloudStorageAccount.Parse(storageConnectionString);
+            var client = new SecretClient(new Uri(_sliderStorageConfiguration.VaultUri), new DefaultAzureCredential());
+            KeyVaultSecret secret = await client.GetSecretAsync(_sliderStorageConfiguration.SecretName);
+
+            CloudStorageAccount account = CloudStorageAccount.Parse(secret.Value);
 
             CloudBlobClient serviceClient = account.CreateCloudBlobClient();
 
