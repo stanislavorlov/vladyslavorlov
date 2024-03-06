@@ -29,15 +29,12 @@ namespace VladyslavOrlovPromo.Core
 
             services.AddOptions();
             services.Configure<PlayerOverviewConfiguration>(Configuration.GetSection("PlayerOverview"));
-            services.Configure<SliderStorageConfiguration>(Configuration.GetSection("SliderStorage"));
             services.AddSingleton(Configuration);
 
             services.AddTransient<IRankingViewModelBuilder, RankingViewModelBuilder>();
 
             services.AddHttpClient<IRequestRepository, RequestRepository>();
             services.AddTransient<IPlayerOverviewFactory, PlayerOverviewFactory>();
-
-            services.AddTransient<ISliderRepository, SliderRepository>();
 
             services.AddTransient<IPlayerOverviewService, PlayerOverviewService>();
         }

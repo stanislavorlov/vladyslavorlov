@@ -10,19 +10,15 @@ namespace VladyslavOrlovPromo.Core.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ISliderRepository _sliderRepository;
 
-        public HomeController(ILogger<HomeController> logger, ISliderRepository sliderRepository)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _sliderRepository = sliderRepository;
         }
 
         public async Task<IActionResult> IndexAsync()
         {
             _logger.LogInformation("Home/Index action gets called");
-
-            await _sliderRepository.Fetch();
 
             return View();
         }
