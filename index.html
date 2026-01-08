@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vladyslav Orlov | Professional Tennis Player</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Vladyslav <span>Orlov</span></div>
+        <div class="nav-links">
+            <a href="#about">Profile</a>
+            <a href="#stats">Stats</a>
+            <a href="#sponsors">Partners</a>
+            <a href="#media">Media</a>
+            <a href="https://www.instagram.com/orlovladyslav/" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/vlad1orlov" target="_blank">Facebook</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Vladyslav Orlov</h1>
+        <p>Professional Tennis Player • UKR</p>
+        <a href="#about" class="btn">Explore Profile</a>
+    </header>
+
+    <section id="about">
+        <h2 class="section-title">About Vladyslav</h2>
+        <div class="bio-container">
+            <div class="bio-text">
+                <p>Vladyslav Orlov (born 17 May 1995) is a Ukrainian professional tennis player representing his country
+                    on the international stage, including the Davis Cup.</p>
+                <p>With a career-high ATP singles ranking of World No. 350 and multiple ITF titles to his name,
+                    Vladyslav is known for his resilience and tactical gameplay on both hard and clay courts.</p>
+                <ul style="margin-top: 20px; color: var(--text-gray);">
+                    <li><strong>Country:</strong> Ukraine 🇺🇦</li>
+                    <li><strong>Residence:</strong> Kharkiv, Ukraine</li>
+                    <li><strong>Height:</strong> 1.88 m (6 ft 2 in)</li>
+                    <li><strong>Plays:</strong> Right-handed (Two-handed backhand)</li>
+                </ul>
+            </div>
+            <div class="stats-grid" id="stats">
+                <div class="stat-card">
+                    <div class="stat-num">350</div>
+                    <div class="stat-label">Singles Career High Ranking (ATP)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">209</div>
+                    <div class="stat-label">Doubles Career High Ranking (ATP)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">2</div>
+                    <div class="stat-label">Davis Cup Wins</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">24+</div>
+                    <div class="stat-label">Career Titles (ITF/Doubles)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sponsors-section" id="sponsors">
+        <section class="sponsors-content">
+            <h2 class="section-title">Official Partners</h2>
+            <div class="sponsor-grid">
+
+                <a href="https://paka.life/" target="_blank" class="sponsor-item">
+                    <div class="sponsor-logo paka"><img src="images/paka.svg" alt="PAKA"></div>
+                    <div class="sponsor-name">Apparel Partner</div>
+                </a>
+
+                <a href="https://www.instagram.com/head_tennis/" target="_blank" class="sponsor-item">
+                    <div class="sponsor-logo head"><img src="images/head.jpg" alt="HEAD"></div>
+                    <div class="sponsor-name">Equipment Partner</div>
+                </a>
+
+                <a href="https://www.instagram.com/myprostringer/" target="_blank" class="sponsor-item">
+                    <div class="sponsor-logo mps"><img src="images/pro-stringer.webp" alt="My Pro Stringer"></div>
+                    <div class="sponsor-name">Stringing Partner</div>
+                </a>
+
+            </div>
+        </section>
+    </div>
+
+    <section id="media">
+        <h2 class="section-title">Latest Updates</h2>
+        <p style="text-align: center; margin-bottom: 40px; color: var(--text-gray);">
+            Follow the journey on Instagram
+            <a href="https://www.instagram.com/orlovladyslav/" class="insta-link" target="_blank">@orlovladyslav</a>
+            and Facebook
+            <a href="https://www.facebook.com/vlad1orlov" class="insta-link" target="_blank">@vlad1orlov</a>
+        </p>
+
+        <div class="media-grid">
+            <a href="https://www.instagram.com/orlovladyslav/" target="_blank" class="media-item">
+                <img src="images/instagram1.jpg" alt="Tennis Match">
+                <div class="insta-overlay"><span class="insta-btn">View Post</span></div>
+            </a>
+            <a href="https://www.instagram.com/orlovladyslav/" target="_blank" class="media-item">
+                <img src="images/instagram2.jpg" alt="Training">
+                <div class="insta-overlay"><span class="insta-btn">View Post</span></div>
+            </a>
+            <a href="https://www.instagram.com/orlovladyslav/" target="_blank" class="media-item">
+                <img src="images/instagram3.jpg" alt="Court">
+                <div class="insta-overlay"><span class="insta-btn">View Post</span></div>
+            </a>
+            <a href="https://www.instagram.com/orlovladyslav/" target="_blank" class="media-item">
+                <img src="images/instagram4.jpg" alt="Victory">
+                <div class="insta-overlay"><span class="insta-btn">View Post</span></div>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Vladyslav Orlov &bull; Official Website</p>
+        <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.6;">
+            &copy; 2026 All Rights Reserved.
+        </p>
+        <p style="margin-top: 5px; font-size: 0.75rem; opacity: 0.5;">
+            All image rights reserved. Any usage must include a reference to the source.
+        </p>
+    </footer>
+
+    <script>
+        // Simple scroll reveal effect for sections
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.8s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+
+</html>

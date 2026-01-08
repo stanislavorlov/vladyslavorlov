@@ -1,9 +1,0 @@
-﻿@model VladyslavOrlovPromo.Web.NetCore.Models.RankingViewModel
-
-<dl class="row"></dl>
-<div class="container">
-    <div class="row card-title">Current Rankings</div>
-    @await Html.PartialAsync("RankingPartial", Model.Current)
-    <div class="row card-title mt-5">Career-High Rankings</div>
-    @await Html.PartialAsync("RankingPartial", Model.Highest)
-</div>
