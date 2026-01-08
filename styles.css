@@ -86,7 +86,7 @@ nav {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=80&w=2500&auto=format&fit=crop') center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('images/promo.jpg') center/cover no-repeat;
     padding: 0 20px;
     position: relative;
 }
