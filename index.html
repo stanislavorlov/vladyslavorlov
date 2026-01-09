@@ -45,15 +45,15 @@
             </div>
             <div class="stats-grid" id="stats">
                 <div class="stat-card">
-                    <div class="stat-num">350</div>
+                    <div class="stat-num" id="stat-singles">350</div>
                     <div class="stat-label">Singles Career High Ranking (ATP)</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-num">209</div>
+                    <div class="stat-num" id="stat-doubles">209</div>
                     <div class="stat-label">Doubles Career High Ranking (ATP)</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-num">2</div>
+                    <div class="stat-num" id="stat-davis">2</div>
                     <div class="stat-label">Davis Cup Wins</div>
                 </div>
                 <div class="stat-card">
@@ -144,6 +144,28 @@
             section.style.transition = 'all 0.8s ease';
             observer.observe(section);
         });
+
+        // Fetch and update stats
+        async function updateStats() {
+            try {
+                const response = await fetch('stats.json');
+                const data = await response.json();
+
+                if (data) {
+                    const singlesEl = document.getElementById('stat-singles');
+                    const doublesEl = document.getElementById('stat-doubles');
+                    const davisEl = document.getElementById('stat-davis');
+
+                    if (singlesEl) singlesEl.textContent = data.singlesRanking || '350';
+                    if (doublesEl) doublesEl.textContent = data.doublesRanking || '209';
+                    if (davisEl) davisEl.textContent = data.davisCupWins || '2';
+                }
+            } catch (error) {
+                console.error('Error fetching stats:', error);
+            }
+        }
+
+        updateStats();
     </script>
 </body>
 
