@@ -110,5 +110,5 @@ export default async (req: Request) => {
 }
 
 export const config: Config = {
-    schedule: "@daily"
+    schedule: "0 10 * * 1" // At 10:00 on Monday.
 }
