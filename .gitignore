@@ -341,3 +341,4 @@ healthchecksdb
 # Local Netlify folder
 .netlify
 .env
+.DS_Store
