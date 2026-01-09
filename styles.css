@@ -263,21 +263,26 @@ section {
     color: #fff;
     position: relative;
     overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .sponsor-logo.paka {
     background: #E6D5C3;
     color: #333;
+    height: 150px;
 }
 
 .sponsor-logo.head {
     background: #000;
     border: 1px solid #444;
+    height: 150px;
 }
 
 .sponsor-logo.mps {
     background: #f0f0f0;
     color: #111;
+    height: 150px;
 }
 
 .sponsor-name {
@@ -308,6 +313,8 @@ section {
     height: 100%;
     object-fit: cover;
     transition: var(--transition);
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .media-item:hover img {
