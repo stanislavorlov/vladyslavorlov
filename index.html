@@ -124,7 +124,7 @@
     <footer>
         <p>Vladyslav Orlov &bull; Official Website</p>
         <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.6;">
-            &copy; 2026 All Rights Reserved.
+            &copy; <span id="year"></span> All Rights Reserved.
         </p>
         <p style="margin-top: 5px; font-size: 0.75rem; opacity: 0.5;">
             All image rights reserved. Any usage must include a reference to the source.
@@ -132,6 +132,10 @@
     </footer>
 
     <script>
+        const yearElement = document.getElementById('year');
+        const currentYear = new Date().getFullYear();
+        yearElement.textContent = currentYear;
+
         // Simple scroll reveal effect for sections
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
