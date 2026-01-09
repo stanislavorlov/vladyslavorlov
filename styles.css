@@ -324,6 +324,10 @@ section {
     font-size: 0.8rem;
 }
 
+.insta-link {
+    color: var(--primary);
+}
+
 .insta-link:hover {
     text-decoration: underline;
 }
