@@ -198,99 +198,101 @@ section {
 
 /* --- SPONSORS --- */
 .sponsors-section {
-    background: var(--dark-gray);
-    width: 100%;
+    background-color: #222121;
+    padding: 80px 0px;
+    text-align: center;
     max-width: 100%;
-    /* Full width strip */
+    margin: 0 auto;
 }
 
-.sponsors-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
+.sponsor-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: #1a1a1a;
+    /* Slightly lighter than bg */
+    width: 280px;
+    /* Fixed width for uniformity */
+    padding: 40px 20px;
+    border-radius: 12px;
+    /* Smooth corners */
+
+    /* THE SILVER BORDER & SHADOW (Your Theme) */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
+    transition: all 0.4s ease;
+    text-decoration: none;
+    margin: 15px;
+    /* Spacing between cards */
+}
+
+/* --- HOVER EFFECT (The Highlight) --- */
+.sponsor-card:hover {
+    transform: translateY(-7px);
+    /* Floats up */
+    border-color: rgba(192, 192, 192, 0.6);
+    /* Silver border lights up */
+    box-shadow: 0 10px 30px rgba(192, 192, 192, 0.15);
+    /* Silver glow */
+    background: #222;
+}
+
+/* --- LOGO STYLING --- */
+.logo-container {
+    height: 80px;
+    /* Fixed height ensures alignment */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.logo-container img {
+    max-width: 80%;
+    max-height: 100%;
+    /* OPTIONAL: Make logos all white for a super clean look */
+    filter: grayscale(100%) brightness(200%);
+    transition: 0.3s;
 }
 
 .sponsor-grid {
     display: flex;
+    /* 1. Turns on the row layout */
     justify-content: center;
-    align-items: center;
+    /* 2. Centers them in the middle of the screen */
     flex-wrap: wrap;
-    gap: 60px;
-    margin-top: 40px;
+    /* 3. Allows wrapping on small mobile screens */
+    gap: 30px;
+    /* 4. Adds space between the cards */
+    max-width: 1200px;
+    /* Optional: Keeps them from getting too wide apart */
+    margin: 0 auto;
+    /* Centers the container itself */
 }
 
-.sponsor-item {
-    display: block;
-    text-align: center;
-    opacity: 0.8;
-    /* Slightly dimmed when not active */
-    transition: all 0.3s ease;
-
-    /* Structure to make the shadow look good */
-    padding: 20px;
-    border-radius: 12px;
-    /* Rounded corners */
-    background: rgba(255, 255, 255, 0.02);
-    /* Very faint background */
-
-    /* SILVER SHADOW & BORDER */
-    border: 1px solid rgba(192, 192, 192, 0.1);
-    box-shadow: 0 4px 15px rgba(192, 192, 192, 0.1);
-    /* Soft silver glow */
+/* Reveal original logo color on hover */
+.sponsor-card:hover .logo-container img {
+    filter: grayscale(0%) brightness(100%);
 }
 
-.sponsor-item:hover {
-    opacity: 1;
-    transform: translateY(-5px);
-    /* Floats up */
-
-    /* Brighter Silver Glow */
-    border-color: rgba(192, 192, 192, 0.5);
-    box-shadow: 0 10px 30px rgba(192, 192, 192, 0.3);
-}
-
-.sponsor-logo {
-    /*width: 180px;*/
-    height: 80px;
-    background: #333;
-    /* Placeholder for logo */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.2rem;
-    border-radius: 4px;
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-.sponsor-logo.paka {
-    background: #E6D5C3;
-    color: #333;
-    height: 150px;
-}
-
-.sponsor-logo.head {
-    background: #000;
-    border: 1px solid #444;
-    height: 150px;
-}
-
-.sponsor-logo.mps {
-    background: #f0f0f0;
-    color: #111;
-    height: 150px;
-}
-
-.sponsor-name {
-    margin-top: 15px;
-    font-size: 0.9rem;
-    color: var(--text-gray);
+/* --- TEXT LABEL --- */
+.sponsor-label {
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    color: #666;
+    /* Muted text */
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.sponsor-card:hover .sponsor-label {
+    color: #fff;
+    /* Text turns white on hover */
 }
 
 /* --- INSTAGRAM / MEDIA --- */
