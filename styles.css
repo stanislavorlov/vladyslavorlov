@@ -58,8 +58,12 @@ nav {
     text-transform: uppercase;
 }
 
-.logo span {
+.logo span:first-child {
     color: var(--primary);
+}
+
+.logo span:last-child {
+    color: var(--secondary);
 }
 
 .nav-links {
