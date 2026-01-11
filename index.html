@@ -10,7 +10,12 @@
     <meta name="keywords"
         content="Vladyslav Orlov, Vlad Orlov, Влад Орлов, Владислав Орлов, tennis Ukraine, тенісисти України, Davis Cup Ukraine, кубок Девіса, кубок Девиса">
     <meta http-equiv="Content-Language" content="en, uk, ru">
-    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script type="application/ld+json">
         {
@@ -69,54 +74,43 @@
         </div>
     </header>
 
-    <section id="about">
-        <h2 class="section-title">THE UNCONVENTIONAL PATH</h2>
-        <div class="bio-container">
+    <section id="about" class="reveal">
+        <h2 class="section-title">The Unconventional Path</h2>
+
+        <div class="about-card">
             <div class="bio-text">
-                <p>In a sport where careers are often decided by age 18, Vladyslav Orlov broke the rules. Turning
-                    professional at 25—an age when many are considering retirement—he entered the ATP Tour not with a
-                    federation's backing, but with sheer will.</p>
+                <p class="lead-text">"In a sport where careers are often decided by age 18, Vladyslav Orlov broke the
+                    rules."</p>
+
+                <p>Turning professional at 25—an age when many are considering retirement—he entered the ATP Tour not
+                    with a federation's backing, but with sheer will.</p>
+
                 <p>His journey is defined by contrast. While climbing to a career-high ATP 350 singles and 209 doubles,
                     his home base in Kharkiv, Ukraine, became a war zone. Displaced but undeterred, Vladyslav turned the
                     global tour into his home, competing across continents while representing the resilience of his
                     nation.</p>
+
                 <p>He is not just a tennis player. He is a testament to the fact that it is never too late to start, and
                     impossible to quit.</p>
+
                 <ul class="bio-details">
-                    <li><strong>Country:</strong> Ukraine 🇺🇦</li>
-                    <li><strong>Style:</strong> Right-handed (Two-handed backhand)</li>
-                    <li><strong>Weapon:</strong> Resilience</li>
+                    <li><strong>Country</strong> <span>Ukraine 🇺🇦</span></li>
+                    <li><strong>Style</strong> <span>Right-handed</span></li>
+                    <li><strong>Weapon</strong> <span>Resilience</span></li>
                 </ul>
-                <p style="margin-top: 20px;">
-                    <strong>ON THE WORLD STAGE</strong>
-                <div>When playing for Ukraine, Vladyslav elevates his game. A key member of the Davis Cup squad, he
-                    secured the decisive victory against Colombia in 2023, sealing the tie for his nation. His
-                    experience extends to facing the sport's elite, including a high-profile singles clash against World
-                    No. 9 Taylor Fritz (USA) in 2024.</div>
-                </p>
+
+                <div class="world-stage">
+                    <h3>On the World Stage</h3>
+                    <p>When playing for Ukraine, Vladyslav elevates his game. A key member of the Davis Cup squad, he
+                        secured the decisive victory against Colombia in 2023, sealing the tie for his nation. His
+                        experience extends to facing the sport's elite, including a high-profile singles clash against
+                        World No. 9 Taylor Fritz (USA) in 2024.</p>
+                </div>
             </div>
-            <!-- <div class="stats-grid" id="stats">
-                <div class="stat-card">
-                    <div class="stat-num" id="stat-singles">350</div>
-                    <div class="stat-label">Singles Career High Ranking (ATP)</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-num" id="stat-doubles">209</div>
-                    <div class="stat-label">Doubles Career High Ranking (ATP)</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-num" id="stat-davis">2</div>
-                    <div class="stat-label">Davis Cup Wins</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-num">24+</div>
-                    <div class="stat-label">Career Titles (ITF/Doubles)</div>
-                </div>
-            </div> -->
         </div>
     </section>
 
-    <section id="highlights" class="match-highlight">
+    <section id="highlights" class="match-highlight reveal">
         <div class="highlight-info">
             <p>Competing at the highest level: Highlights from the 2024 encounter against World No. 9 <a
                     href="https://www.instagram.com/taylor_fritz/" class="insta-link" target="_blank">Taylor
@@ -136,17 +130,29 @@
         </div>
     </section>
 
-    <section id="media">
-        <h2 class="section-title">Latest Updates</h2>
-        <p style="text-align: center; margin-bottom: 40px; color: var(--text-gray);">
-            Follow the journey on Instagram
-            <a href="https://www.instagram.com/orlovladyslav/" class="insta-link" target="_blank">@orlovladyslav</a>
-            and Facebook
-            <a href="https://www.facebook.com/vlad1orlov" class="insta-link" target="_blank">@vlad1orlov</a>
-        </p>
+    <section id="media" class="reveal">
+        <div class="media-header">
+            <h2 class="section-title">THE TOUR REALITY</h2>
+            <div class="media-cta">
+                <h3>Follow the journey daily <span><a href="https://www.instagram.com/orlovladyslav/"
+                            target="_blank">@vlad1orlov</a></span></h3>
+                <p>See the reality of the tour on Instagram</p>
+                <a href="https://www.instagram.com/orlovladyslav/" class="btn-cta" target="_blank">View Lifestyle</a>
 
-        <div class="media-grid">
-            <a href="https://www.instagram.com/orlovladyslav/" target="_blank" class="media-item">
+                <div class="widget-wrapper">
+                    <behold-widget feed-id="cxnBfFjFns3SrVfaFAww"></behold-widget>
+                </div>
+
+                <script type="module">
+                    (() => {
+                        const d = document, s = d.createElement("script"); s.type = "module";
+                        s.src = "https://w.behold.so/widget.js"; d.head.append(s);
+                    })();
+                </script>
+            </div>
+        </div>
+    </section>
+    <!-- <a href="https://www.instagram.com/orlovladyslav/" target="_blank" class="media-item">
                 <img src="images/instagram1.jpg" alt="Tennis Match">
                 <div class="insta-overlay"><span class="insta-btn">View Post</span></div>
             </a>
@@ -161,11 +167,12 @@
             <a href="https://www.instagram.com/orlovladyslav/" target="_blank" class="media-item">
                 <img src="images/instagram4.jpg" alt="Victory">
                 <div class="insta-overlay"><span class="insta-btn">View Post</span></div>
-            </a>
-        </div>
+            </a> -->
+
+    <!--</div>-->
     </section>
 
-    <section id="sponsors" class="sponsors-section">
+    <section id="sponsors" class="sponsors-section reveal">
         <h2 class="section-title">Official Partners</h2>
         <div class="sponsor-grid">
 
@@ -246,6 +253,69 @@
         }
 
         updateStats();
+    </script>
+    <!-- Ambient Background Glows -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-outer"></div>
+    <div class="cursor-inner"></div>
+
+    <script>
+        // Scroll Reveal Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Optional: stop observing after reveal
+                        // observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => observer.observe(el));
+        });
+
+        // Custom Cursor & Magnetic Effect
+        const cursorOuter = document.querySelector('.cursor-outer');
+        const cursorInner = document.querySelector('.cursor-inner');
+        const magneticElements = document.querySelectorAll('.btn, .btn-cta, .insta-link, .sponsor-card, .nav-links a');
+
+        document.addEventListener('mousemove', (e) => {
+            cursorOuter.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+            cursorInner.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+        });
+
+        magneticElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorOuter.classList.add('cursor-hover');
+                cursorInner.classList.add('cursor-hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorOuter.classList.remove('cursor-hover');
+                cursorInner.classList.remove('cursor-hover');
+                el.style.transform = 'translate3d(0, 0, 0)';
+            });
+
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+
+                // Magnet effect strength
+                const strength = 15;
+                el.style.transform = `translate3d(${x / strength}px, ${y / strength}px, 0)`;
+            });
+        });
     </script>
 </body>
 
