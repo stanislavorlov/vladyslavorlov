@@ -222,6 +222,13 @@ section {
     margin: 20px auto 0;
 }
 
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+    }
+}
+
 /* --- BIO & ABOUT --- */
 .about-card {
     background: rgba(26, 26, 26, 0.5);
@@ -312,6 +319,28 @@ section {
     .lead-text {
         font-size: 1.4rem;
         padding-left: 20px;
+    }
+
+    .bio-details {
+        padding: 20px;
+    }
+
+    .bio-details li {
+        grid-template-columns: 100px 1fr;
+        gap: 10px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .bio-details li {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .bio-details strong {
+        font-size: 0.75rem;
+        letter-spacing: 1px;
     }
 }
 
