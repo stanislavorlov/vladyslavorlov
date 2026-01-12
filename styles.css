@@ -6,16 +6,21 @@
     --light: #f8f9fa;
     --text-gray: #a0a0a0;
     --dark-gray: #1a1a1a;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    /* Account for fixed header */
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth;
 }
 
 body {
@@ -29,7 +34,7 @@ body {
 a {
     text-decoration: none;
     color: inherit;
-    transition: var(--transition);
+    transition: color var(--transition);
 }
 
 ul {
@@ -38,9 +43,7 @@ ul {
 
 /* --- NAVIGATION --- */
 nav {
-    background: rgba(10, 10, 10, 0.8);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(10, 10, 10, 0.95);
     padding: 20px 5%;
     display: flex;
     justify-content: space-between;
@@ -49,8 +52,11 @@ nav {
     top: 0;
     width: 100%;
     z-index: 1000;
-    transition: var(--transition);
+    transition: padding var(--transition), background-color var(--transition);
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    /* GPU acceleration for Safari */
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 nav.scrolled {
@@ -231,9 +237,7 @@ section {
 
 /* --- BIO & ABOUT --- */
 .about-card {
-    background: rgba(26, 26, 26, 0.5);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(26, 26, 26, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 60px;
@@ -419,7 +423,7 @@ h3 {
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 
-    transition: all 0.4s ease;
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
     text-decoration: none;
     margin: 15px;
     /* Spacing between cards */
@@ -604,7 +608,7 @@ h3 {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
-    transition: var(--transition);
+    transition: background-color var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 
 .btn-cta:hover {
@@ -632,7 +636,7 @@ h3 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--transition);
+    transition: transform var(--transition), opacity var(--transition);
     -webkit-user-select: none;
     user-select: none;
 }
@@ -652,7 +656,7 @@ h3 {
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: var(--transition);
+    transition: opacity var(--transition);
 }
 
 .media-item:hover .insta-overlay {
@@ -686,93 +690,22 @@ footer {
     color: #666;
 }
 
-/* --- CUSTOM CURSOR --- */
-html,
-body {
-    cursor: none;
-}
-
-a,
-button,
-.btn,
-.btn-cta,
-.sponsor-card,
-.insta-link {
-    cursor: none;
-}
-
-.cursor-outer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 35px;
-    height: 35px;
-    border: 1px solid var(--primary);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 10000;
-    transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s;
-    transform: translate3d(-50%, -50%, 0);
-    margin: -17.5px 0 0 -17.5px;
-    /* Precision centering */
-}
-
-.cursor-inner {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 6px;
-    height: 6px;
-    background-color: var(--secondary);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 10001;
-    transform: translate3d(-50%, -50%, 0);
-    margin: -3px 0 0 -3px;
-    /* Precision centering */
-}
-
-.cursor-outer.cursor-hover {
-    width: 60px;
-    height: 60px;
-    background-color: rgba(0, 123, 255, 0.1);
-    border-color: transparent;
-}
-
-.cursor-inner.cursor-hover {
-    transform: scale(1.5);
-    background-color: var(--light);
-}
-
-/* Fix for mobile - hide custom cursor on touch devices */
-@media (hover: none) and (pointer: coarse) {
-
-    html,
-    body,
-    a,
-    button {
-        cursor: auto;
-    }
-
-    .cursor-outer,
-    .cursor-inner {
-        display: none;
-    }
-}
-
 /* --- ANIMATIONS & REVEALS --- */
 .reveal {
     position: relative;
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-    visibility: hidden;
+    transform: translate3d(0, 20px, 0);
+    -webkit-transform: translate3d(0, 20px, 0);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    /* Prevent Safari flicker */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) !important;
+    -webkit-transform: translate3d(0, 0, 0) !important;
 }
 
 /* Stagger delay for children if needed */
@@ -786,10 +719,15 @@ button,
     width: 60vw;
     height: 60vw;
     border-radius: 50%;
-    filter: blur(150px);
+    filter: blur(80px);
+    /* Reduced blur for Safari paint speed */
+    -webkit-filter: blur(80px);
     z-index: -3;
-    opacity: 0.15;
+    opacity: 0.12;
     pointer-events: none;
+    /* Force GPU layer */
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 .glow-1 {

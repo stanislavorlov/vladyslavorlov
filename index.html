@@ -16,7 +16,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1.1">
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -142,13 +142,6 @@
                 <div class="widget-wrapper">
                     <behold-widget feed-id="cxnBfFjFns3SrVfaFAww"></behold-widget>
                 </div>
-
-                <script type="module">
-                    (() => {
-                        const d = document, s = d.createElement("script"); s.type = "module";
-                        s.src = "https://w.behold.so/widget.js"; d.head.append(s);
-                    })();
-                </script>
             </div>
         </div>
     </section>
@@ -210,111 +203,38 @@
         </p>
     </footer>
 
-    <script>
-        const yearElement = document.getElementById('year');
-        const currentYear = new Date().getFullYear();
-        yearElement.textContent = currentYear;
-
-        // Simple scroll reveal effect for sections
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = 0;
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'all 0.8s ease';
-            observer.observe(section);
-        });
-
-        // Fetch and update stats
-        async function updateStats() {
-            try {
-                const response = await fetch('stats.json');
-                const data = await response.json();
-
-                if (data) {
-                    const singlesEl = document.getElementById('stat-singles');
-                    const doublesEl = document.getElementById('stat-doubles');
-                    const davisEl = document.getElementById('stat-davis');
-
-                    if (singlesEl) singlesEl.textContent = data.singlesRanking || '350';
-                    if (doublesEl) doublesEl.textContent = data.doublesRanking || '209';
-                    if (davisEl) davisEl.textContent = data.davisCupWins || '2';
-                }
-            } catch (error) {
-                console.error('Error fetching stats:', error);
-            }
-        }
-
-        updateStats();
-    </script>
     <!-- Ambient Background Glows -->
     <div class="ambient-glow glow-1"></div>
     <div class="ambient-glow glow-2"></div>
     <div class="ambient-glow glow-3"></div>
 
-    <!-- Custom Cursor -->
-    <div class="cursor-outer"></div>
-    <div class="cursor-inner"></div>
-
     <script>
-        // Scroll Reveal Animation
+        // Set current year
+        const yearElement = document.getElementById('year');
+        if (yearElement) yearElement.textContent = new Date().getFullYear();
+
+        // Optimized Reveal & Performance Script (Safari Compatible)
         document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                threshold: 0.15,
-                rootMargin: '0px 0px -50px 0px'
-            };
+            const revealElements = document.querySelectorAll('.reveal');
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        // Optional: stop observing after reveal
-                        // observer.unobserve(entry.target);
+                        observer.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.05, rootMargin: '0px 0px -10px 0px' });
 
-            const revealElements = document.querySelectorAll('.reveal');
             revealElements.forEach(el => observer.observe(el));
-        });
 
-        // Custom Cursor & Magnetic Effect
-        const cursorOuter = document.querySelector('.cursor-outer');
-        const cursorInner = document.querySelector('.cursor-inner');
-        const magneticElements = document.querySelectorAll('.btn, .btn-cta, .insta-link, .sponsor-card, .nav-links a');
-
-        document.addEventListener('mousemove', (e) => {
-            cursorOuter.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-            cursorInner.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-        });
-
-        magneticElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorOuter.classList.add('cursor-hover');
-                cursorInner.classList.add('cursor-hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorOuter.classList.remove('cursor-hover');
-                cursorInner.classList.remove('cursor-hover');
-                el.style.transform = 'translate3d(0, 0, 0)';
-            });
-
-            el.addEventListener('mousemove', (e) => {
-                const rect = el.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-
-                // Magnet effect strength
-                const strength = 15;
-                el.style.transform = `translate3d(${x / strength}px, ${y / strength}px, 0)`;
-            });
+            // Initialize Behold Widget (Async)
+            setTimeout(() => {
+                const s = document.createElement("script");
+                s.type = "module";
+                s.src = "https://w.behold.so/widget.js";
+                document.body.appendChild(s);
+            }, 300);
         });
     </script>
 </body>
