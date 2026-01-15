@@ -1,0 +1,113 @@
+<html>
+
+<head>
+    <title>Instagram Feed</title>
+    <style>
+        :root {
+            --post-border-radius: 20px;
+            --post-aspect-ratio: 0.8;
+            --grid-gap: 20px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: 300;
+            color: #262626;
+            margin-bottom: 40px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .posts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--grid-gap);
+        }
+
+        .post {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--post-border-radius);
+            transition: transform 0.3s ease;
+        }
+
+        .post:hover {
+            transform: scale(1.02);
+        }
+
+        .post-image {
+            aspect-ratio: var(--post-aspect-ratio);
+            width: 100%;
+            display: block;
+        }
+
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Instagram Feed</h1>
+    <div class="container">
+        <div class="posts">
+            <div class="post">
+                <a href="https://www.instagram.com/p/DOk2SX6jELJ/" target="_blank">
+                    <div class="post-image">
+                        <img src="../data/post_0.jpg" alt="Instagram Post">
+                    </div>
+                </a>
+            </div>
+            <div class="post">
+                <a href="https://www.instagram.com/p/DOk2SX6jELJ/" target="_blank">
+                    <div class="post-image">
+                        <img src="../data/post_1.jpg" alt="Instagram Post">
+                    </div>
+                </a>
+            </div>
+            <div class="post">
+                <a href="https://www.instagram.com/p/DOk2SX6jELJ/" target="_blank">
+                    <div class="post-image">
+                        <img src="../data/post_2.jpg" alt="Instagram Post">
+                    </div>
+                </a>
+            </div>
+            <div class="post">
+                <a href="https://www.instagram.com/p/DOk2SX6jELJ/" target="_blank">
+                    <div class="post-image">
+                        <img src="../data/post_3.jpg" alt="Instagram Post">
+                    </div>
+                </a>
+            </div>
+            <div class="post">
+                <a href="https://www.instagram.com/p/DOk2SX6jELJ/" target="_blank">
+                    <div class="post-image">
+                        <img src="../data/post_4.jpg" alt="Instagram Post">
+                    </div>
+                </a>
+            </div>
+            <div class="post">
+                <a href="https://www.instagram.com/p/DOk2SX6jELJ/" target="_blank">
+                    <div class="post-image">
+                        <img src="../data/post_5.jpg" alt="Instagram Post">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
