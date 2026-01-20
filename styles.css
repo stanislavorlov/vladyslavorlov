@@ -413,8 +413,6 @@ h3 {
 
     background: #1a1a1a;
     /* Slightly lighter than bg */
-    width: 280px;
-    /* Fixed width for uniformity */
     padding: 40px 20px;
     border-radius: 12px;
     /* Smooth corners */
@@ -425,8 +423,6 @@ h3 {
 
     transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
     text-decoration: none;
-    margin: 15px;
-    /* Spacing between cards */
 }
 
 /* --- HOVER EFFECT (The Highlight) --- */
@@ -507,18 +503,18 @@ h3 {
 }
 
 .sponsor-grid {
-    display: flex;
-    /* 1. Turns on the row layout */
-    justify-content: center;
-    /* 2. Centers them in the middle of the screen */
-    flex-wrap: wrap;
-    /* 3. Allows wrapping on small mobile screens */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
-    /* 4. Adds space between the cards */
-    max-width: 1200px;
-    /* Optional: Keeps them from getting too wide apart */
+    max-width: 800px;
     margin: 0 auto;
-    /* Centers the container itself */
+}
+
+@media (max-width: 600px) {
+    .sponsor-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
 }
 
 /* Reveal original logo color on hover */
